@@ -17,10 +17,10 @@ then
   exit 7 #since make failed it means that val and hel also failed hence the number 111 in binary hence 7 in decimal.
 else
   #i can use those both valgrinds with ./$progname and it will work because of cd $dirpath command beforehand but better safe than sorry hence the $dirpath/$progname
-  valgrind --error-exitcode=2 --leak-check=full --show-leak-kinds=all  $dirpath/$progname $@ 2>/dev/null 1>/dev/null  #im using full leak check and show all kinds so that i wouldn't miss any leak.
+  valgrind --error-exitcode=2 --leak-check=full --show-leak-kinds=all  ./$progname $@ 2>/dev/null 1>/dev/null  #im using full leak check and show all kinds so that i wouldn't miss any leak.
   valsucc=$?
 
-  valgrind --tool=helgrind --error-exitcode=1  $dirpath/$progname $@ 2>/dev/null 1>/dev/null
+  valgrind --tool=helgrind --error-exitcode=1  ./$progname $@ 2>/dev/null 1>/dev/null
   helsucc=$?
 
   exitcode=$((helsucc+valsucc)) #i specifically set error exit code on val and hel to 2 and 1 so that me exit codes will be the same as the exercises demands.
