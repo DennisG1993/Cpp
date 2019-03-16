@@ -26,25 +26,30 @@ else
   exitcode=$((helsucc+valsucc)) #i specifically set error exit code on val and hel to 2 and 1 so that me exit codes will be the same as the exercises demands.
 
 
-  if [ $exitcode -eq 0 ];then
-  	echo "Compilation    Memory leaks    thread race"
-  	echo "   PASS            PASS            PASS"
-      cd - 1>/dev/null 2>/dev/null
-      exit 0
-  elif [ $exitcode -eq 1 ];then
-      echo "Compilation    Memory leaks    thread race"
-      echo  "  PASS            PASS            FAIL"
-      cd - 1>/dev/null 2>/dev/null
-      exit 1
-  elif  [ $exitcode -eq 2 ];then
-      echo "Compilation    Memory leaks    thread race"
-      echo  "  PASS            FAIL            PASS"
-      cd - 1>/dev/null 2>/dev/null
-      exit 2
-  else
-      echo "Compilation    Memory leaks    thread race"
-      echo  "  PASS            FAIL            FAIL"
-      cd 1>/dev/null 2>/dev/null
-      exit 3
-  fi
+case "$exitcode" in
+  "0")
+    echo "Compilation  Memory leaks  Thread race"
+    echo "   PASS          PASS          PASS   "
+    cd "$currpath" 1>/dev/null
+    exit $exitcode
+    ;;
+  "1")
+    echo "Compilation  Memory leaks  Thread race"
+    echo "   PASS          PASS          FAIL   "
+    cd "$currpath" 1>/dev/null
+    exit $exitcode
+    ;;
+  "2")
+    echo "Compilation  Memory leaks  Thread race"
+    echo "   PASS          FAIL          PASS   "
+    cd "$currpath" 1>/dev/null
+    exit $exitcode
+    ;;
+  "3")
+    echo "Compilation  Memory leaks  Thread race"
+    echo "   PASS          FAIL          FAIL   "
+    cd "$currpath" 1>/dev/null
+    exit $exitcode
+    ;;
+  esac
 fi
