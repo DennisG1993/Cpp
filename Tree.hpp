@@ -29,23 +29,23 @@ private:
   int length;
 
 public:
-  Node* recursiveInsert(Node*,int, int&); //done
-  bool  recursivecontains(Node*,int); // done
+  Node* recursiveInsert(Node*,int, int&);
+  bool  recursivecontains(Node*,int);
   Node* recursiveRemove(Node *, int, int&);
   int recursiverelative(Node *, int, int);
-  int FsmallestData(Node*);// done
+  int FsmallestData(Node*);
   void recursiverprint(Node*,int);
 
-  Tree(); // done
+  Tree(); 
   ~Tree();
-  void insert(int); // done
-  void remove(int); //done
-  int size(); // done
-  bool contains(int); // done
-  int root(); //done
-  int parent(int); //done
-  int left(int); //done
-  int right(int); //done
+  void insert(int);
+  void remove(int);
+  int size();
+  bool contains(int);
+  int root();
+  int parent(int);
+  int left(int);
+  int right(int);
   void print();
 };
 };
